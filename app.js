@@ -31,7 +31,7 @@ app.use("/posts", require("./routes/Posts"));
 app.use("/auth", require("./routes/Users"));
 app.use("/members", require("./routes/Members"));
 
-let port = process.env.PORT || 3001;
+let port = process.env.PORT || 4000;
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {
