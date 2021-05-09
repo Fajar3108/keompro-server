@@ -1,8 +1,6 @@
 const express = require("express");
-require("dotenv").config();
-
-const mysql = require("mysql2");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const app = express();
 const db = require("./models");
@@ -31,10 +29,10 @@ app.use("/posts", require("./routes/Posts"));
 app.use("/auth", require("./routes/Users"));
 app.use("/members", require("./routes/Members"));
 
-let port = process.env.PORT || 4000;
+const { PORT = 3001 } = process.env;
 
 db.sequelize.sync().then(() => {
-  app.listen(port, () => {
-    console.log("Connected" + port);
+  app.listen(PORT, () => {
+    console.log(`app listening at http://locahost:${PORT}`);
   });
 });
